@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Quote } from "lucide-react";
-import ceoPic from "@/assets/marino-pdg.png";
+import ceoPic from "@/assets/marino-pdg.jpg";
+import horacioPic from "@/assets/Horacio_NANI.png";
 
 export const CEO = () => {
   return (
@@ -21,7 +22,7 @@ export const CEO = () => {
       
       <div className="container mx-auto relative z-10">
         <div className="grid md:grid-cols-2 gap-16 items-center max-w-6xl mx-auto">
-          {/* CEO Image */}
+          {/* Leadership profiles */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -29,18 +30,47 @@ export const CEO = () => {
             transition={{ duration: 0.8 }}
             className="relative"
           >
-            <motion.div
-              className="relative z-10 rounded-3xl overflow-hidden shadow-2xl"
-              whileHover={{ scale: 1.02 }}
-              transition={{ duration: 0.3 }}
-            >
-              <img
-                src={ceoPic}
-                alt="Marino ATOHOUN - CEO de Hypee"
-                className="w-full h-auto"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-primary/40 to-transparent" />
-            </motion.div>
+            <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <motion.div
+                className="relative rounded-3xl overflow-hidden shadow-2xl"
+                whileHover={{ scale: 1.02 }}
+                transition={{ duration: 0.3 }}
+              >
+                <div className="aspect-[4/5] w-full">
+                  <img
+                    src={ceoPic}
+                    alt="Marino ATOHOUN - Fondateur & CEO de Hypee"
+                    className="h-full w-full object-cover"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-primary/50 via-primary/10 to-transparent" />
+                <div className="absolute inset-x-0 bottom-0 p-5">
+                  <p className="text-xl font-heading font-bold text-white">Marino ATOHOUN</p>
+                  <p className="text-sm text-white/80">Fondateur &amp; CEO</p>
+                </div>
+              </motion.div>
+
+              <motion.div
+                className="relative rounded-3xl overflow-hidden shadow-2xl"
+                whileHover={{ scale: 1.02 }}
+                transition={{ duration: 0.3 }}
+              >
+                <div className="aspect-[4/5] w-full">
+                  <img
+                    src={horacioPic}
+                    alt="Horacio NANI - Cofondateur & Conseillers économiques"
+                    className="h-full w-full object-cover"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-primary/50 via-primary/10 to-transparent" />
+                <div className="absolute inset-x-0 bottom-0 p-5">
+                  <p className="text-xl font-heading font-bold text-white">Horacio NANI</p>
+                  <p className="text-sm text-white/80">Cofondateur &amp; Conseillers économiques</p>
+                </div>
+              </motion.div>
+            </div>
             
             {/* Decorative elements */}
             <motion.div
@@ -126,19 +156,6 @@ export const CEO = () => {
                 réel exprimé par notre communauté. Notre mission ne s'arrête jamais à la 
                 technologie : elle commence et finit toujours avec les humains.
               </p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.65 }}
-              className="mt-6 pt-6 border-t border-border/50"
-            >
-              <p className="text-2xl font-heading font-bold bg-gradient-primary bg-clip-text text-transparent">
-                Marino ATOHOUN
-              </p>
-              <p className="text-sm text-muted-foreground mt-1">Founder & CEO, Hypee</p>
             </motion.div>
 
             <motion.div
