@@ -25,91 +25,112 @@ const Navigation = () => {
     setIsDark(!isDark);
   };
 
+  const navLinkClassName = scrolled
+    ? "px-3 py-2 rounded-2xl text-sm text-muted-foreground hover:text-primary hover:bg-muted/40 transition-colors"
+    : "px-3 py-2 rounded-2xl text-sm text-white/80 hover:text-white hover:bg-white/10 transition-colors";
+
   return (
     <>
       {/* Desktop Header */}
-      <header className={`fixed top-0 left-0 right-0 z-50 backdrop-blur-md transition-all duration-300 ${
-        scrolled ? 'bg-card/80 border-b border-border shadow-lg' : 'bg-card/60 border-b border-border/50'
-      }`}>
-        <div className="container mx-auto px-6">
-          <div className="flex items-center justify-between h-20">
-            {/* Logo */}
-            <Link to="/" className="flex items-center gap-2">
-                <img src={logoHypee} alt="Hypee Logo" className="w-12 rounded-lg" />
-            </Link>
+      <header id="site-header" className="fixed top-4 left-0 right-0 z-50 px-4 sm:px-6">
+        <div className="mx-auto max-w-7xl">
+          <div
+            className={`group relative overflow-hidden rounded-3xl border backdrop-blur-xl saturate-150 transition-all duration-300 ${
+              scrolled
+                ? "bg-card/40 border-border/60 shadow-xl"
+                : "bg-card/12 border-border/50 shadow-sm"
+            }`}
+          >
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-primary/10 via-accent/10 to-transparent opacity-35 transition-opacity duration-300 group-hover:opacity-55" />
 
-            {/* Desktop Navigation */}
-            <nav className="hidden md:flex items-center gap-6">
-              <a href="#vision" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                Vision
-              </a>
-              <a href="#products" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                Produits
-              </a>
-              <a href="#ceo" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                À propos
-              </a>
-              <a href="#join" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                Contact
-              </a>
-            </nav>
+            <div className="relative px-4 sm:px-6">
+              <div className="h-16 flex items-center justify-between md:grid md:grid-cols-[1fr_auto_1fr] md:justify-items-center">
+                {/* Left slot */}
+                <div className="flex items-center justify-start md:justify-self-start">
+                  {/* Mobile Menu Button */}
+                  <button
+                    onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                    className={`md:hidden p-2 rounded-2xl transition-smooth ${
+                      scrolled ? "text-foreground hover:bg-muted" : "text-white hover:bg-white/10"
+                    }`}
+                    aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+                  >
+                    {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+                  </button>
+                </div>
 
-            {/* CTA Button */}
-            <div className="hidden md:flex items-center gap-3">
-              <button
-                onClick={toggleDarkMode}
-                className="p-2 rounded-lg hover:bg-muted transition-smooth"
-                aria-label="Toggle dark mode"
-              >
-                {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-              </button>
-              <a href="#join">
-                <Button className="gap-2 bg-gradient-primary hover:opacity-90 shadow-glow hover:shadow-lg transition-smooth">
-                  <Users className="w-4 h-4" />
-                  Rejoignez-nous
-                </Button>
-              </a>
+                {/* Desktop Navigation (center) */}
+                <nav className="hidden md:flex items-center gap-2">
+                  <a href="#vision" className={navLinkClassName}>
+                    Vision
+                  </a>
+                  <a href="#products" className={navLinkClassName}>
+                    Produits
+                  </a>
+                  <a href="#ceo" className={navLinkClassName}>
+                    À propos
+                  </a>
+                  <a href="#join" className={navLinkClassName}>
+                    Contact
+                  </a>
+                </nav>
+
+                {/* Right slot (CTA + Logo) */}
+                <div className="flex items-center gap-3 md:justify-self-end">
+                  <div className="hidden md:flex items-center gap-3">
+                    <button
+                      onClick={toggleDarkMode}
+                      className={`p-2 rounded-2xl transition-smooth ${
+                        scrolled ? "hover:bg-muted" : "text-white hover:bg-white/10"
+                      }`}
+                      aria-label="Toggle dark mode"
+                    >
+                      {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+                    </button>
+                    <a href="#join">
+                      <Button className="gap-2 bg-gradient-primary hover:opacity-90 shadow-glow hover:shadow-lg transition-smooth">
+                        <Users className="w-4 h-4" />
+                        Rejoignez-nous
+                      </Button>
+                    </a>
+                  </div>
+
+                  {/* Logo (right) */}
+                  <Link to="/" className="flex items-center gap-2">
+                    <img src={logoHypee} alt="Hypee Logo" className="w-11 rounded-2xl shadow-sm" />
+                  </Link>
+                </div>
+              </div>
             </div>
 
-            {/* Mobile Menu Button */}
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2 text-foreground hover:bg-muted rounded-md transition-smooth"
-            >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </button>
+            {/* Mobile Navigation */}
+            {mobileMenuOpen && (
+              <div className="md:hidden relative border-t border-border/60 bg-card/80">
+                <nav className="px-4 sm:px-6 py-4 flex flex-col gap-2">
+                  <a href="#vision" onClick={() => setMobileMenuOpen(false)} className="px-4 py-3 rounded-xl text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-smooth">
+                    Vision
+                  </a>
+                  <a href="#products" onClick={() => setMobileMenuOpen(false)} className="px-4 py-3 rounded-xl text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-smooth">
+                    Produits
+                  </a>
+                  <a href="#ceo" onClick={() => setMobileMenuOpen(false)} className="px-4 py-3 rounded-xl text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-smooth">
+                    À propos
+                  </a>
+                  <a href="#join" onClick={() => setMobileMenuOpen(false)} className="px-4 py-3 rounded-xl text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-smooth">
+                    Contact
+                  </a>
+                  <a href="#join" onClick={() => setMobileMenuOpen(false)}>
+                    <Button className="w-full mt-2 bg-gradient-primary hover:opacity-90">
+                      <Users className="w-4 h-4" />
+                      Rejoignez-nous
+                    </Button>
+                  </a>
+                </nav>
+              </div>
+            )}
           </div>
         </div>
-
-        {/* Mobile Navigation */}
-        {mobileMenuOpen && (
-          <div className="md:hidden border-t border-border bg-card">
-            <nav className="container mx-auto px-6 py-4 flex flex-col gap-2">
-              <a href="#vision" onClick={() => setMobileMenuOpen(false)} className="px-4 py-3 rounded-md text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-smooth">
-                Vision
-              </a>
-              <a href="#products" onClick={() => setMobileMenuOpen(false)} className="px-4 py-3 rounded-md text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-smooth">
-                Produits
-              </a>
-              <a href="#ceo" onClick={() => setMobileMenuOpen(false)} className="px-4 py-3 rounded-md text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-smooth">
-                À propos
-              </a>
-              <a href="#join" onClick={() => setMobileMenuOpen(false)} className="px-4 py-3 rounded-md text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-smooth">
-                Contact
-              </a>
-              <a href="#join" onClick={() => setMobileMenuOpen(false)}>
-                <Button className="w-full mt-2 bg-gradient-primary hover:opacity-90">
-                  <Users className="w-4 h-4" />
-                  Rejoignez-nous
-                </Button>
-              </a>
-            </nav>
-          </div>
-        )}
       </header>
-
-      {/* Spacer to prevent content from hiding under fixed header */}
-      <div className="h-16" />
     </>
   );
 };

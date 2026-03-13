@@ -39,15 +39,15 @@ export const CEO = () => {
                 <div className="aspect-[4/5] w-full">
                   <img
                     src={ceoPic}
-                    alt="Marino ATOHOUN - Fondateur & CEO de Hypee"
+                    alt="Mahouli Marino ATOHOUN - Cofondateur & CEO de Hypee"
                     className="h-full w-full object-cover"
                     loading="lazy"
                   />
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-primary/50 via-primary/10 to-transparent" />
                 <div className="absolute inset-x-0 bottom-0 p-5">
-                  <p className="text-xl font-heading font-bold text-white">Marino ATOHOUN</p>
-                  <p className="text-sm text-white/80">Fondateur &amp; CEO</p>
+                  <p className="text-xl font-heading font-bold text-white">Mahouli Marino ATOHOUN</p>
+                  <p className="text-sm text-white/80">Cofondateur &amp; CEO</p>
                 </div>
               </motion.div>
 

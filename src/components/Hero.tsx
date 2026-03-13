@@ -6,7 +6,7 @@ import heroImage from "@/assets/african-tech-hero.jpg";
 
 export const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 overflow-hidden text-white">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <img 
@@ -14,7 +14,7 @@ export const Hero = () => {
           alt="African Tech Innovation" 
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/90 via-background/95 to-secondary/90" />
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/90 via-primary/70 to-secondary/90" />
       </div>
       
       <AfricanPattern />
@@ -25,10 +25,10 @@ export const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card border-2 border-primary/30 mb-8"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card border-2 border-white/20 mb-8"
           >
-            <Sparkles className="w-4 h-4 text-primary" />
-            <span className="text-sm font-medium">L'Afrique numérique se construit ici</span>
+            <Sparkles className="w-4 h-4 text-white/90" />
+            <span className="text-sm font-medium text-white/90">L'Afrique numérique se construit ici</span>
           </motion.div>
 
           <motion.h1
@@ -39,14 +39,16 @@ export const Hero = () => {
           >
             Créer, connecter, libérer
             <br />
-            <span className="bg-gradient-primary bg-clip-text text-transparent">l'Afrique numérique</span>
+            <span className="bg-gradient-to-r from-white via-white/90 to-white bg-clip-text text-transparent">
+              l'Afrique numérique
+            </span>
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-xl md:text-2xl text-muted-foreground mb-10 max-w-3xl mx-auto leading-relaxed"
+            className="text-xl md:text-2xl text-white/80 mb-10 max-w-3xl mx-auto leading-relaxed"
           >
             Hypee construit les réseaux sociaux africains de demain. 
             Des espaces numériques qui célèbrent nos cultures, 
@@ -66,7 +68,11 @@ export const Hero = () => {
               </Button>
             </a>
             <a href="#vision">
-              <Button size="lg" variant="outline" className="text-lg px-8 py-6 glass-card border-2 hover:border-primary/50 hover:shadow-lg transition-all duration-300">
+              <Button
+                size="lg"
+                variant="outline"
+                className="text-lg px-8 py-6 border-2 border-white/25 text-white backdrop-blur-md bg-black/20 hover:bg-black/30 hover:text-white hover:border-white/45 hover:shadow-lg transition-all duration-300 dark:bg-white/10 dark:hover:bg-white/15"
+              >
                 Notre vision
               </Button>
             </a>

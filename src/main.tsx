@@ -19,7 +19,11 @@ const SmoothScrollWrapper = ({ children }: { children: React.ReactNode }) => {
         if (href && href !== '#') {
           const element = document.querySelector(href);
           if (element) {
-            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            const header = document.querySelector<HTMLElement>('#site-header');
+            const headerRect = header?.getBoundingClientRect();
+            const offset = headerRect ? Math.ceil(headerRect.bottom) + 12 : 0;
+            const elementTop = element.getBoundingClientRect().top + window.scrollY;
+            window.scrollTo({ top: Math.max(0, elementTop - offset), behavior: 'smooth' });
           }
         }
       }
