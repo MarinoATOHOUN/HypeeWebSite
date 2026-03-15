@@ -5,6 +5,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { Send, Mail, User, Briefcase, Zap, Star, Users } from "lucide-react";
 import { useState } from "react";
+import formulaireImage from "@/assets/formulaireImage.png";
 
 export const JoinUs = () => {
   const { toast } = useToast();
@@ -110,53 +111,85 @@ export const JoinUs = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2, duration: 0.8 }}
-            className="glass-card border-2 border-primary/20 rounded-3xl p-8 sm:p-12 shadow-elegant hover:shadow-glow transition-all duration-500 hover:border-primary/40"
+            className="glass-card border-2 border-primary/20 rounded-3xl shadow-elegant hover:shadow-glow transition-all duration-500 hover:border-primary/40 overflow-hidden"
           >
-            <form onSubmit={handleSubmit} className="space-y-6">
-              {/* Form fields remain the same */}
-              <div className="grid sm:grid-cols-2 gap-6">
-                {/* Name Input */}
+            <div className="p-8 sm:p-12">
+              <div className="flex items-center justify-between gap-4 mb-8">
                 <div>
-                  <label htmlFor="name" className="flex items-center gap-2 text-sm font-medium mb-2">
-                    <User className="w-4 h-4 text-primary" />
-                    Nom complet
-                  </label>
-                  <Input id="name" type="text" placeholder="Votre nom" value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} required className="w-full px-4 py-3 rounded-xl border-2 border-input bg-background/80 backdrop-blur-sm focus:ring-2 focus:ring-primary/50 focus:border-primary transition-smooth hover:border-primary/50 hover:bg-background/90" />
+                  <h3 className="text-2xl sm:text-3xl font-bold">Parlez-nous de vous</h3>
+                  <p className="text-sm text-muted-foreground mt-1">Un message suffit pour rejoindre l’aventure.</p>
                 </div>
-                {/* Email Input */}
-                <div>
-                  <label htmlFor="email" className="flex items-center gap-2 text-sm font-medium mb-2">
-                    <Mail className="w-4 h-4 text-primary" />
-                    Email
-                  </label>
-                  <Input id="email" type="email" placeholder="votre@email.com" value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} required className="w-full px-4 py-3 rounded-xl border-2 border-input bg-background/80 backdrop-blur-sm focus:ring-2 focus:ring-primary/50 focus:border-primary transition-smooth hover:border-primary/50 hover:bg-background/90" />
+                <div className="hidden sm:flex items-center gap-2 px-3 py-2 rounded-full border border-primary/20 bg-background/50 backdrop-blur">
+                  <Star className="w-4 h-4 text-primary" />
+                  <span className="text-xs text-muted-foreground">Réponse sous 48h</span>
                 </div>
               </div>
-              {/* Role Input */}
-              <div>
-                <label htmlFor="role" className="flex items-center gap-2 text-sm font-medium mb-2">
-                  <Briefcase className="w-4 h-4 text-primary" />
-                  Profil / Intérêt
-                </label>
-                <Input id="role" type="text" placeholder="Ex: Développeur, Investisseur..." value={formData.role} onChange={(e) => setFormData({ ...formData, role: e.target.value })} required className="w-full px-4 py-3 rounded-xl border-2 border-input bg-background/80 backdrop-blur-sm focus:ring-2 focus:ring-primary/50 focus:border-primary transition-smooth hover:border-primary/50 hover:bg-background/90" />
+
+              <div className="grid md:grid-cols-[1fr_0.9fr] gap-8 items-stretch">
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div className="grid sm:grid-cols-2 gap-6">
+                    <div>
+                      <label htmlFor="name" className="flex items-center gap-2 text-sm font-medium mb-2">
+                        <User className="w-4 h-4 text-primary" />
+                        Nom complet
+                      </label>
+                      <Input id="name" type="text" placeholder="Votre nom" value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} required className="w-full px-4 py-3 rounded-xl border-2 border-input bg-background/80 backdrop-blur-sm focus:ring-2 focus:ring-primary/50 focus:border-primary transition-smooth hover:border-primary/50 hover:bg-background/90" />
+                    </div>
+                    <div>
+                      <label htmlFor="email" className="flex items-center gap-2 text-sm font-medium mb-2">
+                        <Mail className="w-4 h-4 text-primary" />
+                        Email
+                      </label>
+                      <Input id="email" type="email" placeholder="votre@email.com" value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} required className="w-full px-4 py-3 rounded-xl border-2 border-input bg-background/80 backdrop-blur-sm focus:ring-2 focus:ring-primary/50 focus:border-primary transition-smooth hover:border-primary/50 hover:bg-background/90" />
+                    </div>
+                  </div>
+                  <div>
+                    <label htmlFor="role" className="flex items-center gap-2 text-sm font-medium mb-2">
+                      <Briefcase className="w-4 h-4 text-primary" />
+                      Profil / Intérêt
+                    </label>
+                    <Input id="role" type="text" placeholder="Ex: Développeur, Investisseur..." value={formData.role} onChange={(e) => setFormData({ ...formData, role: e.target.value })} required className="w-full px-4 py-3 rounded-xl border-2 border-input bg-background/80 backdrop-blur-sm focus:ring-2 focus:ring-primary/50 focus:border-primary transition-smooth hover:border-primary/50 hover:bg-background/90" />
+                  </div>
+                  <div>
+                    <label htmlFor="message" className="flex items-center gap-2 text-sm font-medium mb-2">
+                      <Send className="w-4 h-4 text-primary" />
+                      Message
+                    </label>
+                    <Textarea id="message" placeholder="Votre message..." value={formData.message} onChange={(e) => setFormData({ ...formData, message: e.target.value })} required rows={4} className="w-full px-4 py-3 rounded-xl border-2 border-input bg-background/80 backdrop-blur-sm focus:ring-2 focus:ring-primary/50 focus:border-primary transition-smooth resize-none hover:border-primary/50 hover:bg-background/90" />
+                  </div>
+                  <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                    <Button type="submit" size="lg" className="w-full bg-gradient-primary hover:opacity-90 text-primary-foreground text-lg py-7 shadow-glow hover:shadow-xl transition-all duration-300 hover:scale-[1.02] font-semibold relative overflow-hidden group">
+                      <span className="absolute inset-0 bg-gradient-to-r from-primary-glow/0 via-primary-glow/30 to-primary-glow/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
+                      <Send className="w-5 h-5 mr-2 relative z-10" />
+                      <span className="relative z-10">Envoyer</span>
+                    </Button>
+                  </motion.div>
+                </form>
+
+                <div className="relative rounded-2xl border-2 border-primary/15 bg-gradient-to-br from-primary/10 via-secondary/5 to-accent/10 overflow-hidden shadow-elegant min-h-[260px] lg:min-h-full">
+                  <img
+                    src={formulaireImage}
+                    alt="Rejoindre la mission Hypee"
+                    className="absolute inset-0 w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-background/20 to-transparent" />
+                  <motion.div
+                    className="absolute -top-10 -right-10 w-40 h-40 rounded-full bg-primary/25 blur-2xl"
+                    animate={{ scale: [1, 1.2, 1], x: [0, -10, 0], y: [0, 10, 0] }}
+                    transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+                  />
+                  <div className="relative h-full p-6 flex flex-col justify-end">
+                    <div className="inline-flex items-center gap-2 self-start px-3 py-1.5 rounded-full bg-background/60 backdrop-blur border border-primary/20">
+                      <Zap className="w-4 h-4 text-primary" />
+                      <span className="text-xs text-foreground/90">On construit avec vous</span>
+                    </div>
+                    <p className="mt-3 text-sm text-foreground/80 max-w-xs">
+                      Une idée, un talent, un réseau ? Dites-nous comment vous voulez contribuer.
+                    </p>
+                  </div>
+                </div>
               </div>
-              {/* Message Textarea */}
-              <div>
-                <label htmlFor="message" className="flex items-center gap-2 text-sm font-medium mb-2">
-                  <Send className="w-4 h-4 text-primary" />
-                  Message
-                </label>
-                <Textarea id="message" placeholder="Votre message..." value={formData.message} onChange={(e) => setFormData({ ...formData, message: e.target.value })} required rows={4} className="w-full px-4 py-3 rounded-xl border-2 border-input bg-background/80 backdrop-blur-sm focus:ring-2 focus:ring-primary/50 focus:border-primary transition-smooth resize-none hover:border-primary/50 hover:bg-background/90" />
-              </div>
-              {/* Submit Button */}
-              <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-                <Button type="submit" size="lg" className="w-full bg-gradient-primary hover:opacity-90 text-primary-foreground text-lg py-7 shadow-glow hover:shadow-xl transition-all duration-300 hover:scale-[1.02] font-semibold relative overflow-hidden group">
-                  <span className="absolute inset-0 bg-gradient-to-r from-primary-glow/0 via-primary-glow/30 to-primary-glow/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
-                  <Send className="w-5 h-5 mr-2 relative z-10" />
-                  <span className="relative z-10">Envoyer</span>
-                </Button>
-              </motion.div>
-            </form>
+            </div>
           </motion.div>
         </div>
 
