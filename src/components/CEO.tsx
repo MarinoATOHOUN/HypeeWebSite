@@ -59,7 +59,7 @@ export const CEO = () => {
                 <div className="aspect-[4/5] w-full">
                   <img
                     src={horacioPic}
-                    alt="Horacio NANI - Cofondateur & Conseillers économiques"
+                    alt="Horacio NANI - Cofondateur & Conseiller économique"
                     className="h-full w-full object-cover"
                     loading="lazy"
                   />

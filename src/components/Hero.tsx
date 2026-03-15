@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { Button } from "./ui/button";
 import { AfricanPattern } from "./AfricanPattern";
-import heroImage from "@/assets/african-tech-hero.jpg";
+import heroImage from "@/assets/african-tech-hero.png";
 
 export const Hero = () => {
   return (
@@ -14,7 +14,7 @@ export const Hero = () => {
           alt="African Tech Innovation" 
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/90 via-primary/70 to-secondary/90" />
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/55 via-primary/30 to-secondary/55" />
       </div>
       
       <AfricanPattern />
