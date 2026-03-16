@@ -73,14 +73,14 @@ export const JoinUs = () => {
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 gap-12 max-w-5xl mx-auto">
           {/* Why Join Us Block */}
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2, duration: 0.8 }}
-            className="glass-card border-2 border-primary/20 rounded-3xl p-8 sm:p-12 shadow-elegant hover:shadow-glow transition-all duration-500 hover:border-primary/40 h-full"
+            className="glass-card border-2 border-primary/20 rounded-3xl p-8 sm:p-12 shadow-elegant hover:shadow-glow transition-all duration-500 hover:border-primary/40"
           >
             <h3 className="text-3xl font-bold mb-8 text-center">Pourquoi nous rejoindre ?</h3>
             <div className="space-y-8">
@@ -107,8 +107,8 @@ export const JoinUs = () => {
 
           {/* Form Block */}
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2, duration: 0.8 }}
             className="glass-card border-2 border-primary/20 rounded-3xl shadow-elegant hover:shadow-glow transition-all duration-500 hover:border-primary/40 overflow-hidden"
